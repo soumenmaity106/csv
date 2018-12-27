@@ -1,0 +1,64 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Users</h2>
+<a href="/admin/users/add-user" class="btn btn-primary">Add a new Users</a>
+<br><br>
+
+<% if (count > 0) { %>
+
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Profile</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Technical</th>
+            <th>Exp</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% newusers.forEach(function(user){ %>
+        <tr>
+            <td>
+                <% if (user.image == "") { %>
+                <img id="noimage" src="/images/noimage.png">
+                <% } else {%>
+                <img id="noimage" src="/user_images/<%= user._id %>/<%= user.image %>">
+                <% }%>
+            </td>
+            <td>
+                <%= user.user_name %>
+            </td>
+            <td>
+                <%= user.user_phone %>
+            </td>
+            <td>
+                <%= user.user_email %>
+            </td>
+            <td>
+                <%= user.user_company_name %>
+            </td>
+            <td>
+             <%= user.technical %>
+            </td>
+            <td>            
+            <%= user.years_of_exp %>
+          </td>
+
+            <td><a href="/admin/users/edit-user/<%= user._id %>">Edit</a></td>
+            <td><a class="confirmdeletion" href="/admin/users/delete-user/<%= user._id %>">Delete</a></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<% } else {%>
+<h3 class="text-center">There are no Users.</h3>
+<% }%>
+
+<%- include('../_layouts/adminfooter') %>

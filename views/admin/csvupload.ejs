@@ -1,0 +1,50 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">CSV UPLOAD</h2>
+<a href="/admin/csvupload/add-csv" class="btn btn-primary">Add a new Csv File</a>
+<br><br>
+
+<% if (count > 0) { %>
+
+    <table class="table table-striped alignmiddle">
+    
+        <thead>
+            <tr class="home">
+                <th>Course Id</th>
+                <th>Course Name</th>
+                <th>Course Fees</th>
+                <th>Faculty Name</th>                
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% courses.forEach(function(course){ %>
+            <tr>                
+                <td>
+                    <%= course.course_id %>
+                </td>
+                <td>
+                    <%= course.course_name %>
+                </td>
+                <td>
+                    <%= course.course_fees %>
+                </td>
+                <td>
+                    <%= course.faculty_name %>
+                </td>               
+    
+                <td><a href="/admin/users/edit-user/<%= course._id %>">Edit</a></td>
+                <td><a class="confirmdeletion" href="/admin/csvupload/delete-csv/<%= course._id %>">Delete</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    
+    <% } else {%>
+    <h3 class="text-center">There are no CSV File</h3>
+    <% }%>
+
+
+
+<%- include('../_layouts/adminfooter') %>

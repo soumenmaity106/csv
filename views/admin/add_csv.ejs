@@ -1,0 +1,16 @@
+<%- include('../_layouts/adminheader') %>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2 class="page-title">Add a CSV FILE</h2> 
+        <form method="post" action="/admin/csvupload/add-csv" enctype="multipart/form-data"> 
+            <div class="form-group">
+                <label for="exampleInputEmail1">CSV File Upload *</label>
+                <input type="file" name="file" accept=".csv" required />
+            </div>
+            <input type="submit" class="btn btn-primary" value="Upload CSV File" />
+        </form>
+    </div>
+</div>
+
+
+<%- include('../_layouts/adminfooter') %>
